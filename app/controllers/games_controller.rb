@@ -25,6 +25,13 @@ class GamesController < ApplicationController
         render json: @game
     end
 
+    def destroy
+        game = Game.find(params[:id])
+        game.destroy
+
+        render json: game
+    end
+
     private
 
     def game_params
