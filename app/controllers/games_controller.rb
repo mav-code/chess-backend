@@ -15,14 +15,15 @@ class GamesController < ApplicationController
             blackplayer_id: params[:blackplayer_id],
             started: false
     )
+
         render json: game
     end
 
     def update
-        @game = Game.find(params[:id])
-        @game.update(game_params)
+        game = Game.find(params[:id])
+        game.update(game_params)
 
-        render json: @game
+        render json: game
     end
 
     def destroy
