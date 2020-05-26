@@ -22,6 +22,9 @@ class GamesController < ApplicationController
     def update
         game = Game.find(params[:id])
         game.update(game_params)
+        puts "IN UPDATE" * 10
+        puts game.fen
+        LobbyChannel.broadcast_to game, game.fen
 
         render json: game
     end
@@ -36,7 +39,7 @@ class GamesController < ApplicationController
     private
 
     def game_params
-        params.permit(:name, :fen, :pgn, :whiteplayer_id, :blackplayer_id, :started)
+        params.permit(:name, :fen, :pgn, :whiteplayer_id, :blackplayer_id, :started, :id)
     end 
 
 end
