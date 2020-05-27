@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :challenges
+  # resources :challenges
   post 'login', to: 'auth#login'
   get "/autologin", to: "auth#autologin"
   post "/logout", to: "auth#logout"
